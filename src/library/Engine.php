@@ -26,6 +26,10 @@ class Engine {
     public function start() {
         $result_of_command = exec($this->_line);
         $result_data       = json_decode($result_of_command, true);
+	
+	    Log::info($this->_line);
+	    Log::info($result_of_command);
+	    
         if (isset($result_data['flag']) && isset($result_data['data'])) {
             if (1 !== intval($result_data['flag'])) {
                 //报警
